@@ -45,16 +45,26 @@ function writePassword() {
         FinalPass.push(Numbers[Math.floor(Math.random()*Numbers.length-1)])
       }
     }
-    //Outsite of the Main loop
+
+      //Outsite of the Main loop
+      //If condition when all the user responses are flase
+    if(lowercase==false && uppercase==false && special==false && numbers==false){
+      FinalString= "Please select valid options!"
+    }
+    //else display the password in the box
+    else{
     //Converting array to string
       FinalString=FinalPass.join('');
-      
+    }
+
       passwordArea.innerText = FinalString
+    
 
       //resetting the variables for the user can obtain the new password without reloading the page
       FinalString="";
       FinalPass=[];
       length=0;
+      
      
 }
 
