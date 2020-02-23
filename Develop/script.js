@@ -9,11 +9,12 @@ var Numbers= ['1', '2', '3','4', '5', '6', '7', '8', '9', '0'];
 var rmd='';
 var FinalPass=[];
 var FinalString='';
+var passwordArea = document.querySelector('#password')
 
 
 // Write password to the #password input
 function writePassword() {
-  //User inputs
+   //User inputs
     var length = prompt("how long you want the password to be? (Between 8 to 128)");
     var lowercase = confirm(`Do you want to include lowercase characters?`);
     var uppercase = confirm(`Do you want to include uppercase characters?`);
@@ -26,6 +27,7 @@ function writePassword() {
       //if lowercase is true FinalPass will include lower case chars
       if(lowercase){
         FinalPass.push(LowerCase[Math.floor(Math.random()*LowerCase.length-1)])
+       
       }
 
       //if uppercase is true FinalPass will include upper case chars
@@ -47,7 +49,11 @@ function writePassword() {
     //Converting array to string
       FinalString=FinalPass.join('');
       console.log(FinalString);
-      return FinalString;
+      passwordArea.innerText = FinalString
+      FinalString="";
+      // possibleOptions=[];
+      FinalPass=[];
+     
 }
 
 // Add event listener to generate button
