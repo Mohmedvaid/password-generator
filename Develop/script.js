@@ -16,37 +16,31 @@ var length=0;
 // Write password to the #password input
 function writePassword() {
    //User inputs
-
+   // while loop make sures that user enters a number between 8 and 128
    while(length<=7 || length>=129){
     length = prompt("how long you want the password to be? (Between 8 to 128)");
    }
-
-
     var lowercase = confirm(`Do you want to include lowercase characters?`);
     var uppercase = confirm(`Do you want to include uppercase characters?`);
     var special = confirm(`Do you want to include special characters?`);
     var numbers = confirm(`Do you want to include numbers?`);
     
-    //Main Loop
+    //Main Loop that add the chars to the FinalPass Array
     for(var i=0; i<length; i++){
 
-      //if lowercase is true FinalPass will include lower case chars
+      //if statements thats check if user input is true(then include the certain char) while the length of the string is not equal to the length of the password
       if(lowercase && FinalPass.length!=length){
         FinalPass.push(LowerCase[Math.floor(Math.random()*LowerCase.length-1)])
-       
       }
 
-      //if uppercase is true FinalPass will include upper case chars
       if(uppercase && FinalPass.length!=length){
         FinalPass.push(UpperCase[Math.floor(Math.random()*UpperCase.length-1)])
       }
 
-      //if special is true FinalPass will include Special chars
       if(special && FinalPass.length!=length){
         FinalPass.push(SpecialChar[Math.floor(Math.random()*SpecialChar.length-1)])
       }
 
-      //if numbers is true FinalPass will include numbers
       if(numbers && FinalPass.length!=length){
         FinalPass.push(Numbers[Math.floor(Math.random()*Numbers.length-1)])
       }
@@ -54,11 +48,13 @@ function writePassword() {
     //Outsite of the Main loop
     //Converting array to string
       FinalString=FinalPass.join('');
-      console.log(FinalString);
+      
       passwordArea.innerText = FinalString
+
+      //resetting the variables for the user can obtain the new password without reloading the page
       FinalString="";
-      // possibleOptions=[];
       FinalPass=[];
+      length=0;
      
 }
 
